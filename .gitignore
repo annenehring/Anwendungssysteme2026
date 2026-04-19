@@ -59,5 +59,6 @@ dist/
 # =========================
 .env
 application.properties.local
+~$AStut-01.pptx
 
 
