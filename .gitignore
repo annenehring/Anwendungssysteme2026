@@ -1,0 +1,63 @@
+# =========================
+# Java / Build Output
+# =========================
+*.class
+*.log
+target/
+build/
+out/
+
+# =========================
+# Maven
+# =========================
+.mvn/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# =========================
+# Gradle
+# =========================
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# =========================
+# Eclipse
+# =========================
+.project
+.classpath
+.settings/
+
+# =========================
+# MacOS
+# =========================
+.DS_Store
+
+# =========================
+# Logs / temp
+# =========================
+*.tmp
+*.swp
+*.bak
+
+# =========================
+# Node (falls später Frontend dabei ist)
+# =========================
+node_modules/
+dist/
+
+# =========================
+# Secrets / Configs
+# =========================
+.env
+application.properties.local
+
+
