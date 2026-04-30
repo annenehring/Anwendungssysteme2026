@@ -17,14 +17,15 @@ public class DaytimeClient {
         String host = "time.nist.gov";
         int port = 13;
 
-        try(Socket socket = new Socket(host, port);
-            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()))
-        ){
+        try(Socket socket = new Socket(host,port);
+            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()))){
 
             String line;
+
             while((line = br.readLine())!= null){
-                System.out.println(br.readLine());
+                System.out.println(line);
             }
+
         }catch(IOException e){
             System.out.println(e.getMessage());
         }

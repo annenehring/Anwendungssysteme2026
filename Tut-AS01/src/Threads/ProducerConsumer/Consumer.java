@@ -19,28 +19,28 @@ public class Consumer extends Thread{
         this.queue = queue;
     }
 
+    //TODO: worauf synchronisieren wir? Was ist unser lock Objekt ?
+    //TODO: wir wollen nur aus der queue entnehmen, wenn sie nicht leer ist
+    //TODO: sage dem Producer, dass wir konsumiert haben und ein Element weniger in der queue ist
     @Override
     public void run() {
         while (!isInterrupted()){
             try {
-//TODO: worauf synchronisieren wir? Was ist unser lock Objekt ?
-                synchronized (anzKopf) {
-                    //TODO: wir wollen nur aus der queue entnehmen, wenn is nicht leer ist
-                    //hier einfügen
+                synchronized (queue) {
+                    while(queue.isEmpty()) {
+                        queue.wait();
+                    }
+                        String s = queue.poll();
+                        if (s.equals("Kopf")) {
+                            anzKopf++;
+                        } else {
+                            anzZahl++;
+                        }
+                        double wktKopf = (double) anzKopf / (anzZahl + anzKopf);
+                        System.out.println("Wkt für Kopf = " + wktKopf);
 
-                    String s = queue.poll(); // Gibt uns erstes Element und entfernt es
-                    //s = "Kopf"; queue: ["Zahl]
-                    if (s.equals("Kopf")) anzKopf++;
-                    else anzZahl++;
-                    double wktKopf = (double) anzKopf / (anzZahl+anzKopf);
-                    System.out.println("Wkt für Kopf = " +wktKopf);
-                    //TODO: sage dem Producer, dass wir konsumiert haben
-
+                    queue.notifyAll();
                 }
-
-
-
-
             } catch (Exception e){
                 System.out.println("Consumer abgebrochen durch Exception");
                 return;

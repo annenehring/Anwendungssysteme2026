@@ -11,47 +11,49 @@ TODO:Implementieren Sie einen einfachen Echo-Server und einen dazugehörigen Cli
  Der Server soll auf einem frei wählbaren Port auf eingehende Verbindungen warten und vom
  Client gesendete Integer-Werte empfangen. Jeder empfangene Integer ist vom Server unverändert an den Client
  zurückzusenden. Der Client soll mehrere Integer an den Server senden und die jeweils zurückgesendeten Werte
-  auf der Konsole ausgeben.
+ auf der Konsole ausgeben.
  */
 public class EchoServerIntegers {
 
-    static void main() {
-        try(ServerSocket server = new ServerSocket(8000);
-            Socket client = server.accept();
+    public static void main(String[] args) {
+
+
+
+        try(ServerSocket s = new ServerSocket(8000);
+            Socket client = s.accept();
             InputStream in = client.getInputStream();
-            OutputStream out  = client.getOutputStream()
+            OutputStream out = client.getOutputStream();){
 
-        ){
-            System.out.println("write Server");
-            int i;
-            while((i = in.read())!= -1){
-                out.write(i);
-
+            int input;
+            while((input = in.read()) != -1){
+                out.write(input);
             }
 
 
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+
     }
 }
 class EchoClient{
 
-    static void main() {
+    public static void main(String[] args) {
 
         try(Socket s = new Socket("localhost", 8000);
             InputStream in = s.getInputStream();
-            OutputStream out = s.getOutputStream();
-        ){
+            OutputStream out = s.getOutputStream();){
 
-            out.write(42);
+            out.write(13);
             System.out.println(in.read());
-            out.write(8);
+
+            out.write(2);
             System.out.println(in.read());
 
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+     
 
     }
 }
