@@ -1,5 +1,6 @@
 package Annotations;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.lang.reflect.*;
@@ -16,6 +17,7 @@ TODO: Aufgabe 2 – Annotations implementieren und verwenden
  */
 
 @NoArgsConstructor
+
 public class User {
 
     @NotEmpty(message = "der Name darf nicht leer sein")
@@ -30,6 +32,12 @@ public class User {
     @AllowedValue("USER")
     @AllowedValue("ADMIN")
     public String role;
+
+    public User(String name, String eMail, int id) {
+        this.name = name;
+        this.eMail = eMail;
+        this.id  = id;
+    }
 
     /*
     TODO: Schreibe eine Methode, welche Reflections benutzt und folgendes kann:
@@ -65,21 +73,39 @@ public class User {
         /*INFO: getFields -> alle öffentlichen Felder
                 getDeclaredFields -> alle
          */
+        for(Field f: c.getDeclaredFields()){
+            f.setAccessible(true);
+            System.out.println("Name des Feldes: " + f.getName());
+
+        }
+
 
 
 
     }
 
 
-static void main() {
+static void main() throws NoSuchFieldException, IllegalAccessException {
 
         User u = new User();
         u.interestingMethod("H",1);
 
             //TODO: setze die ID von Paul auf 4
-
+        User paul = new User("Paul","Paul@gmail.com",3);
+        Field f = User.class.getDeclaredField("id");
+        f.setAccessible(true);
+        f.set(paul,4);
+        paul.id = 4;
+        System.out.println(paul.id);
 
         //TODO: prüfe ob das Feld name die Annotation NotEmpty besitzt und printe die Message der Annotation
+
+        Field f2 = User.class.getDeclaredField("name");
+
+        if(f2.isAnnotationPresent(NotEmpty.class)){
+            NotEmpty a = f2.getAnnotation(NotEmpty.class);
+            System.out.println( a.message());
+        }
 
 
     }
