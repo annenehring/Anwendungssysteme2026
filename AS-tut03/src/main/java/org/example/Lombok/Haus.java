@@ -8,13 +8,12 @@ TODO: Erstelle eine Klasse Haus in der du Lombok
 
  */
 @Getter
-@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Haus {
 
-    private String name;
+    private @Setter String name;
     private int etagen;
 
     public static void main(String[] args) {
