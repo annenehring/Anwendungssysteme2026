@@ -1,0 +1,14 @@
+<adresse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="FirmaSchema.xsd">
+    <firmenname>Apfel Computer</firmenname>
+    <firmenzusatz>AG</firmenzusatz>
+    <straße>Unter-den-Fichten</straße>
+    <hausnummer>15</hausnummer>
+    <postleitzahl>12879</postleitzahl>
+    <stadt>Berlin</stadt>
+    <telefonnummer>
+        <vorwahl>0175</vorwahl>
+        <nummer>4990638</nummer>
+    </telefonnummer>
+
+</adresse>

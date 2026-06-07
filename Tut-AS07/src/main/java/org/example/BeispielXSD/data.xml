@@ -1,0 +1,6 @@
+<student xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="schema.xsd"> <!-- xsi= bleibt immer gleich und bei noNamespaceSchemaLocation kommt der Name von der xsd Datei hin -->
+    <firstName>Anna</firstName>
+    <lastName></lastName>
+    <age>22</age>
+</student>

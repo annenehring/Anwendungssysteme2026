@@ -1,0 +1,14 @@
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="student" type="studentType"/>
+
+    <xs:complexType name="studentType">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName"  type="xs:string"/>
+            <xs:element name="age"       type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

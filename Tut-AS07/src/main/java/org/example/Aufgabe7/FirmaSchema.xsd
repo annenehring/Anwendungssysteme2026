@@ -1,0 +1,50 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="firmenzusatzType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GmbH"/>
+            <xs:enumeration value="AG"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="postleitzahlType">
+        <xs:restriction base="xs:string">
+            <xs:length value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="telefonnummerType">
+        <xs:sequence>
+            <xs:element name="vorwahl" type="VorwahlType"/>
+            <xs:element name="nummer"  type="nummerType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="nummerType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value = "[1-9][0-9]{3,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="VorwahlType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value = "0[0-9]{2,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="adresseType">
+        <xs:sequence>
+            <xs:element name="firmenname"    type="xs:string"/>
+            <xs:element name="firmenzusatz"  type="firmenzusatzType"  minOccurs="0"/>
+            <xs:element name="straße"        type="xs:string"/>
+            <xs:element name="hausnummer"    type="xs:positiveInteger"/>
+            <xs:element name="postleitzahl"  type="postleitzahlType"/>
+            <xs:element name="stadt"         type="xs:string"/>
+            <xs:element name="telefonnummer" type="telefonnummerType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="adresse" type="adresseType"/>
+
+</xs:schema>
+
