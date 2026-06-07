@@ -1,4 +1,4 @@
-# Anwendungssysteme — Tutorium Materials
+# Anwendungssysteme - Tutorium Materials
 
 Resources from the Anwendungssysteme tutorial at TU Berlin.
 Slides, code examples, and supplementary material organized by session.
