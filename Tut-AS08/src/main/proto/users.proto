@@ -1,0 +1,27 @@
+
+syntax = "proto3";
+option java_package = "org.example";
+option java_outer_classname = "UserOuterClass";
+
+/*
+TODO:Benutzen Sie die Intellij Vorlage und erstellen Sie im Ordner src/main/proto eine Datei users.proto, mit der sie die Daten
+ aus Aufgabe 11 speichern können. Schreiben Sie dann eine main-Methode, die die User in eine Datei schreibt (z. B. user.bin)
+ und eine andere main-Methode, die diese Datei einliest und die User auf der Konsole ausgibt.
+ */
+
+
+
+message User{
+
+  int32 id = 1;
+  string name = 2;
+  optional string address = 3;
+
+}
+
+message Users{
+  repeated User users = 1;
+}
+
+
+
