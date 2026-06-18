@@ -33,6 +33,21 @@ public class HelloWorldServer {
 
     public static class HelloWorldServerImpl extends HelloServiceGrpc.HelloServiceImplBase {
 
+        public void greeter(Helloworld.HelloRequest req, StreamObserver<Helloworld.HelloResponse> resp){
+
+            String name = req.getName();
+            String greeting = "Hello " + name;
+
+            Helloworld.HelloResponse response = Helloworld.HelloResponse.newBuilder().setGreeting(greeting).build();
+
+            resp.onNext(response);
+            resp.onCompleted();
+
+            System.out.println("Completed");
+
+
+        }
+
 
 
     }

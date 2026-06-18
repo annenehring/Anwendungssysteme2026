@@ -28,7 +28,6 @@ public class UserReader {
         try(FileInputStream in = new FileInputStream("user.bin")){
 
             Users users = Users.parseFrom(in);
-
             System.out.println(users.toString());
 
             for(User u : users.getUsersList()){

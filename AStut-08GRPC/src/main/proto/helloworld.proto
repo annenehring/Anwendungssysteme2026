@@ -2,3 +2,15 @@ syntax = "proto3";
 package de.mcc;
 option java_package = "de.mcc";
 
+
+service HelloService{
+  rpc Greeter(HelloRequest) returns (HelloResponse){}
+}
+
+message HelloRequest{
+  string name = 1;
+}
+
+message HelloResponse{
+  string greeting = 1;
+}
